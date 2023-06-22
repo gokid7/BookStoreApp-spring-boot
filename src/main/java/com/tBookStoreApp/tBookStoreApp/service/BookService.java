@@ -32,7 +32,7 @@ public class BookService {
     public BookDto getBook(long bookId){
         BookDto bookDto = bookRepository.findById(bookId)
                 .map(src -> modelMapper.map(src,BookDto.class))
-                .orElseThrow(() -> new ResourceNotFoundException("Kitap bulunamadı.Id: " + bookId));
+                .orElseThrow(() -> new com.tBookStoreApp.tBookStoreApp.exception2.ResourceNotFoundException("Kitap bulunamadı.Id: ", bookId));
 
         return bookDto;
     }

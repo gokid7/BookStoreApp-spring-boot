@@ -2,7 +2,7 @@ package com.tBookStoreApp.tBookStoreApp.service;
 
 import com.tBookStoreApp.tBookStoreApp.dto.BookDto;
 import com.tBookStoreApp.tBookStoreApp.dto.CategoryDto;
-import com.tBookStoreApp.tBookStoreApp.exception.ResourceNotFoundException;
+import com.tBookStoreApp.tBookStoreApp.exception2.ResourceNotFoundException;
 import com.tBookStoreApp.tBookStoreApp.model.Book;
 import com.tBookStoreApp.tBookStoreApp.model.Category;
 import com.tBookStoreApp.tBookStoreApp.repository.CategoryRepository;
@@ -51,7 +51,7 @@ public class CategoryService {
 
     public List<BookDto> getBooksByCategoryId(CategoryRequest categoryRequest){
         if(categoryRequest.getId() == null){
-            throw new ResourceNotFoundException("Category id boş olamaz.");
+            throw new ResourceNotFoundException("Category id boş olamaz.",categoryRequest.getId());
         }
         Optional<Category> category = categoryRepository.findById(categoryRequest.getId());
         List<BookDto> bookDtoList = new ArrayList<>();
